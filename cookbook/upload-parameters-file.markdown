@@ -3,7 +3,7 @@ layout: cookbook
 title: Automatically upload your parameters.yml file
 ---
 
-As recommanded by the [Symfony2 documentation](
+As recommended by the [Symfony2 documentation](
 http://symfony.com/doc/master/cookbook/workflow/new_project_git.html#initial-project-setup)
 you shoud not put "parameters.ini" or "parameters.yml" file under version
 control. This cookbook will show you a way to automatically upload your
