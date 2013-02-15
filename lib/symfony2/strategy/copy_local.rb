@@ -17,7 +17,7 @@ Capistrano::Deploy::Strategy::Copy.class_eval do
   def composer_get
     logger.debug "Downloading composer to #{destination}"
     capifony_pretty_print "--> Downloading Composer to temp location"
-    run "cd #{destination} && curl -s http://getcomposer.org/installer | #{php_bin}'"
+    run_locally "cd #{destination} && curl -s http://getcomposer.org/installer | #{php_bin}"
     capifony_puts_ok
   end
 
@@ -30,10 +30,10 @@ Capistrano::Deploy::Strategy::Copy.class_eval do
 
     logger.debug "Installing composer dependencies to #{destination}"
     capifony_pretty_print "--> Installing Composer dependencies in temp location"
-    run "cd #{destination} && #{composer_bin} install #{composer_options}'"
+    run_locally "cd #{destination} && #{composer_bin} install #{composer_options}"
     capifony_puts_ok
   end
-0
+
   # Dump autoloader in temp location.
   def dump_autoload
     if !composer_bin
@@ -43,7 +43,7 @@ Capistrano::Deploy::Strategy::Copy.class_eval do
 
     logger.debug "Dumping an optimised autoloader to #{destination}"
     capifony_pretty_print "--> Dumping an optimized autoloader to temp location"
-    run cd "#{destination} && #{composer_bin} dump-autoload --optimize"
+    run_locally cd "#{destination} && #{composer_bin} dump-autoload --optimize"
     capifony_puts_ok
   end
 end
